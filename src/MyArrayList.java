@@ -1,26 +1,15 @@
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
 
 public class MyArrayList<Item> implements Iterable{
     private Object[] list = new Object[1];
     private int size = 0;
-    ArrayList<Integer> arrayList;
 
     public Item get(int index){
-        arrayList.get(0);
-        if (index >=0 && index < list.length) {
-            StringBuilder s = new StringBuilder("");
-            String sq = s.toString();
-            return (Item) list[index];
-        } else throw new IndexOutOfBoundsException();
-    }
-    static private double d(){
-        return (double) 4/5;
-    }
-
-    public Object[] getList(){
-        return list;
+        if (index < 0 || index > size - 1) {
+            throw new IndexOutOfBoundsException();
+        }
+        return (Item) list[index];
     }
 
     public void set(Item item, int index){
@@ -38,9 +27,6 @@ public class MyArrayList<Item> implements Iterable{
 
     private void resize(int capaity){
         Object[] listok = new Object[capaity];
-//        for (int i = 0; i < size; i++) {
-//            listok[i] = list[i];
-//        }
         System.arraycopy(list,0,listok,0,size);
         list = listok;
     }
